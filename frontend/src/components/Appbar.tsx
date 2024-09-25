@@ -22,6 +22,7 @@ const Appbar = () => {
             Authorization: `${token}`, // Include the token in the Authorization header
           },
         });
+        //@ts-ignore
         setAuthenticated(response.data.isSignedUp); // Update authenticated state
       } catch (error) {
         console.error('Error checking user status:', error);

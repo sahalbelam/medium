@@ -44,6 +44,7 @@ export const useBlog = (id: string) => {
             }
         })
             .then(res => {
+                //@ts-ignore
                 setBlog(res.data.blog)
                 setLoading(false)
             })

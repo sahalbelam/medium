@@ -15,9 +15,9 @@ const Signup = () => {
 
     const handleSignup = async()=> {
         try{
-            const response = await axios.post(`${BACKEND_URL}/user/signup`,postInput)
-            const jwt = response.data
-            localStorage.setItem("token",jwt)
+            const response = await axios.post<{ token: string }>(`${BACKEND_URL}/user/signin`,postInput)
+            const token = response.data.token
+            localStorage.setItem("token",token)
             navigate('/blog')
         }catch(e){
             console.error(e)
