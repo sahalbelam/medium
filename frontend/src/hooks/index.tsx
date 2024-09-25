@@ -1,6 +1,6 @@
+import { BACKEND_URL } from "@/config"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { BACKEND_URL } from '../config'
 
 export interface Blog {
     title: string,

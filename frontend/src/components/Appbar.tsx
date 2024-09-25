@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom"
 import { Button } from "./ui/button"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { BACKEND_URL } from "../config"
 import { BookOpen } from "lucide-react"
+import { BACKEND_URL } from "@/config"
 
 const Appbar = () => {
   const location = useLocation()

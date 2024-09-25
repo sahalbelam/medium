@@ -3,7 +3,7 @@ import Quote from "../components/Quote"
 import { Link, useNavigate } from "react-router-dom"
 import { SigninInput } from "@saha_belam/medium-common"
 import axios from "axios"
-import {BACKEND_URL} from '../config'
+import { BACKEND_URL } from "@/config"
 
 const Signin = () => {
     const [postInput, setPostInput] = useState<SigninInput>({
