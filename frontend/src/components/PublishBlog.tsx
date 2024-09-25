@@ -26,8 +26,9 @@ const PublishBlog = () => {
                     Authorization: localStorage.getItem('token')
                 }
             });
-
+            //@ts-ignore
             if (response.data.id) {
+                //@ts-ignore
                 navigate(`/blog/${response.data.id}`);
             } else {
                 throw new Error('Failed to get blog ID after publishing');
