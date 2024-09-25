@@ -1,4 +1,4 @@
-import { Context, Hono, Next } from 'hono'
+import { Hono } from 'hono'
 import userRouter from './routes/user'
 import blogRouter from './routes/blog'
 import { cors } from 'hono/cors'
@@ -10,7 +10,11 @@ const app = new Hono<{
   }
 }>()
 
-app.use('/*', cors())
+app.use('*', cors({
+  origin: 'https://medium-5bs3-fljjjyafr-sahalbelams-projects.vercel.app/', // Allow your frontend domain
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Authorization', 'Content-Type'],
+}))
 
 app.route("/api/v1/user", userRouter)
 app.route("/api/v1/blog", blogRouter)
