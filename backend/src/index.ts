@@ -11,7 +11,7 @@ const app = new Hono<{
 }>()
 
 app.use('*', cors({
-  origin: 'https://medium-eight-alpha.vercel.app/', // Allow your frontend domain
+  origin: '*', // Allow your frontend domain
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowHeaders: ['Authorization', 'Content-Type'],
 }))
