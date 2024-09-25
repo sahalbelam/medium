@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
-import { sign } from 'hono/jwt'
+import { sign, verify } from 'hono/jwt'
 import { signupInput, signinInput } from '@saha_belam/medium-common'
 
 const userRouter = new Hono<{
@@ -77,5 +77,39 @@ userRouter.post('/signin',async(c)=>{
       return c.text("invalid error")
     }
 })
+
+userRouter.get('/check-user', async (c) => {
+  const authHeader = c.req.header("Authorization");
+  if (!authHeader) {
+    c.status(401);
+    return c.json({ message: 'Authorization header is missing' });
+  }
+  // const token = authHeader; it is not used 
+  try {
+    const payload = await verify(authHeader, c.env.JWT_SECRET); // Decode the JWT
+    const userId = payload.id; // Get user ID from the token
+
+    const prisma = new PrismaClient({
+      datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate());
+
+    const user = await prisma.user.findUnique({
+      where: { id: Number(userId) },
+    });
+
+    if (!user) {
+      c.status(404);
+      return c.json({ isSignedUp: false });
+    }
+
+    c.status(200);
+    return c.json({ isSignedUp: true });
+
+  } catch (err) {
+    c.status(403);
+    return c.json({ message: 'Invalid token' });
+  }
+});
+
   
 export default userRouter

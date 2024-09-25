@@ -9,7 +9,7 @@ const FullBlog = ({ blog }: { blog: Blog }) => {
             <div className="flex justify-center">
                 <div className='grid grid-cols-12 w-full pt-12 px-10 max-w-screen-xl'>
                     <div className='col-span-8'>
-                        <div className="text-5xl font-extrabold">
+                        <div className="text-4xl font-extrabold">
                             {blog.title}
                         </div>
                         <div className="text-slate-600 pt-2">

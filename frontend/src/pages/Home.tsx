@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BookOpen, Menu } from "lucide-react"
 import { useBlogs } from "../hooks"
+import image from '../images/image.jpg'
 
 export default function HomePage() {
     const { blogs } = useBlogs();
@@ -62,7 +63,7 @@ export default function HomePage() {
                 <Link to={`/blog/${blog.id}`}>
                 <article key={blog.id} className="border rounded-lg overflow-hidden shadow-sm">
                   <img
-                    src={`/placeholder.svg?height=200&width=400`}
+                    src={image}
                     alt="Article thumbnail"
                     className="w-full h-48 object-cover"
                   />
@@ -71,7 +72,7 @@ export default function HomePage() {
                         {blog.title}
                         </h3>
                         <p className="text-gray-600 mb-4">
-                        {blog.content}
+                        {blog.content.slice(0,100)+"..."}
                         </p>
                         <div className="flex items-center">
                         <Avatar className="h-10 w-10">

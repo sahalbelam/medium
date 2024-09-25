@@ -16,7 +16,7 @@ export const useBlogs = () => {
     const [blogs, setBlogs] = useState<Blog[]>([])
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/blog/bulk`, {
+        axios.get<{ blogs: Blog[] }>(`${BACKEND_URL}/blog/bulk`, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
