@@ -17,7 +17,7 @@ const Appbar = () => {
       setLoading(true); // Start loading
       try {
         const token = localStorage.getItem('token'); // Retrieve token from local storage
-        const response = await axios.get(`${BACKEND_URL}/user/check-user`, {
+        const response = await axios.get(`${BACKEND_URL}/api/v1/user/check-user`, {
           headers: {
             Authorization: `${token}`, // Include the token in the Authorization header
           },
