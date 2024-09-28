@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Appbar from './Appbar';
-import { BACKEND_URL } from '@/config';
+import { REACT_APP_BACKEND_URL } from '@/config';
 
 const PublishBlog = () => {
     const [title, setTitle] = useState('');
@@ -18,7 +18,7 @@ const PublishBlog = () => {
 
         setPublishing(true);
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
+            const response = await axios.post(`${REACT_APP_BACKEND_URL}/api/v1/blog`, {
                 title,
                 content
             }, {

@@ -3,7 +3,7 @@ import Quote from "../components/Quote"
 import { Link, useNavigate } from "react-router-dom"
 import { SignupInput } from "@saha_belam/medium-common"
 import axios from "axios"
-import { BACKEND_URL } from "@/config"
+import { REACT_APP_BACKEND_URL } from "@/config"
 
 const Signup = () => {
     const [postInput, setPostInput] = useState<SignupInput>({
@@ -15,7 +15,7 @@ const Signup = () => {
 
     const handleSignup = async()=> {
         try{
-            const response = await axios.post<{ token: string }>(`${BACKEND_URL}/api/v1/user/signup`,postInput)
+            const response = await axios.post<{ token: string }>(`${REACT_APP_BACKEND_URL}/api/v1/user/signup`,postInput)
             const token = response.data.token
             localStorage.setItem("token",token)
             navigate('/blog')

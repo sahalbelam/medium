@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BookOpen } from "lucide-react";
-import { BACKEND_URL } from "@/config";
+import { REACT_APP_BACKEND_URL } from "@/config";
 
 const Appbar = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const Appbar = () => {
       setLoading(true); // Start loading
       try {
         const token = localStorage.getItem('token'); // Retrieve token from local storage
-        const response = await axios.get(`${BACKEND_URL}/api/v1/user/check-user`, {
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/api/v1/user/check-user`, {
           headers: {
             Authorization: `${token}`, // Include the token in the Authorization header
           },

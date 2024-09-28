@@ -1,6 +1,9 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
+    {
+      "source": "/api/(.*)",
+      "destination": "https://backend.belamsahal8.workers.dev/api/$1"
+    }
+  ]
   }
   
