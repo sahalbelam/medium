@@ -55,34 +55,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="py-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-8">Featured Articles</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hover:cursor-pointer">
               {blogs.slice(0,3).map((blog) => (
                 <Link to={`/blog/${blog.id}`}>
-                <article key={blog.id} className="border rounded-lg overflow-hidden shadow-sm">
+                <article key={blog.id} className="h-full border rounded-lg overflow-hidden shadow-sm">
                   <img
                     src={image}
                     alt="Article thumbnail"
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-6">       
-                        <h3 className="text-xl font-semibold mb-2">
-                        {blog.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4">
-                        {blog.content.slice(0,100)+"..."}
-                        </p>
-                        <div className="flex items-center">
-                        <Avatar className="h-10 w-10">
-                            <AvatarImage src={`./placeholder.svg?height=40&width=40`} />
-                            <AvatarFallback>JD</AvatarFallback>
-                        </Avatar>
-                        <div className="ml-4">
-                            <p className="text-sm font-medium">{blog.author.name}</p>
-                            <p className="text-sm text-gray-500">May 15, 2023 · 1 min read</p>
-                        </div>
+                      <h3 className="text-xl font-semibold mb-2">
+                      {blog.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4">
+                      {blog.content.slice(0,100)+"..."}
+                      </p>
+                      <div className="flex items-center">
+                      <Avatar className="h-10 w-10">
+                          <AvatarImage src={`./placeholder.svg?height=40&width=40`} />
+                          <AvatarFallback>JD</AvatarFallback>
+                      </Avatar>
+                      <div className="ml-4">
+                          <p className="text-sm font-medium">{blog.author.name}</p>
+                          <p className="text-sm text-gray-500">May 15, 2023 · 1 min read</p>
+                      </div>
                     </div>
                   </div>
                 </article></Link>
