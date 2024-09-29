@@ -10,6 +10,12 @@ const app = new Hono<{
   }
 }>()
 
+app.use('*', cors({
+  origin: '*', // Allow your frontend domain
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Authorization', 'Content-Type'],
+}))
+
 app.route("/api/v1/user", userRouter)
 app.route("/api/v1/blog", blogRouter)
 

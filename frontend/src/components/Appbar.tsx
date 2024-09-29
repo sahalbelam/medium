@@ -23,6 +23,7 @@ const Appbar = () => {
           },
         });
         //@ts-ignore
+        // console.log(response.data)
         setAuthenticated(response.data.isSignedUp); // Update authenticated state
       } catch (error) {
         console.error('Error checking user status:', error);
@@ -36,22 +37,9 @@ const Appbar = () => {
   }, []);
 
   const handleSignOut = async () => {
-    // Optional: Call sign-out endpoint on the server to invalidate the session
-    // try {
-    //   const token = localStorage.getItem('token'); // Retrieve token from local storage
-    //   await axios.post(`${BACKEND_URL}/signout`, {}, { // Call your sign-out endpoint if needed
-    //     headers: {
-    //       Authorization: `${token}`, // Include the token in the Authorization header
-    //     },
-    //   });
-    // } catch (error) {
-    //   console.error('Error during sign-out:', error);
-    // } finally {
-    //   // Clear the token from local storage
-      // localStorage.removeItem('token'); // Clear the token
-      setAuthenticated(false); // Update authenticated state
-      navigate('/'); // Redirect to home page or login page
-    // }
+    setAuthenticated(false); // Update authenticated state
+    navigate('/'); // Redirect to home page or login page
+    // console.log(authenticated)
   };
 
   return (

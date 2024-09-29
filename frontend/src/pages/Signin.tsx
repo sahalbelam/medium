@@ -14,8 +14,8 @@ const Signin = () => {
 
     const handleSignin = async()=> {
         try{
-            const response = await axios.post<{ token: string }>(`${REACT_APP_BACKEND_URL}/api/v1/user/signin`,postInput)
-            const token = response.data.token
+            const response = await axios.post(`${REACT_APP_BACKEND_URL}/api/v1/user/signin`,postInput)
+            const token = response.data
             localStorage.setItem("token",token)
             navigate('/blog')
         }catch(e){
