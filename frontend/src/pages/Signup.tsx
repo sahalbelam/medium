@@ -16,13 +16,9 @@ const Signup = () => {
     const handleSignup = async()=> {
         try{
             const response = await axios.post(`${REACT_APP_BACKEND_URL}/api/v1/user/signup`,postInput)
-            const token = response.data || ""
-            if (typeof token === 'string') {
-                localStorage.setItem("token", token)
-                navigate('/blog')
-            } else {
-                console.error("Invalid token received")
-            }
+             // @ts-ignore
+            localStorage.setItem("token", response.data )
+            navigate('/blog')
         }catch(e){
             console.error(e)
         }
