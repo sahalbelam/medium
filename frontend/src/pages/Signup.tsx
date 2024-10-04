@@ -17,7 +17,7 @@ const Signup = () => {
         try{
             //@ts-ignore
             const response = await axios.post(`${REACT_APP_BACKEND_URL}/api/v1/user/signup`,postInput)
-            const token = response.data
+            const token = response.data || ""
             localStorage.setItem("token",token)
             navigate('/blog')
         }catch(e){
